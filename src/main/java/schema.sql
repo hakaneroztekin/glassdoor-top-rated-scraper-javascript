@@ -10,7 +10,7 @@ CREATE TABLE company (
 );
 
 -- Example insert
-INSERT INTO company(
+INSERT INTO company (
     name, 
     profile_url, 
     picture_url, 
