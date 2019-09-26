@@ -1,15 +1,15 @@
-CREATE DATABASE IF NOT EXISTS scraperdb;
+CREATE DATABASE scraperdb;
 
-CREATE TABLE IF NOT EXISTS company (
+CREATE TABLE company (
     id SERIAL PRIMARY KEY,
-    name VARCHAR(20),
-    profile_url VARCHAR(40),
-    picture_url VARCHAR(80),
+    name VARCHAR(80),
+    profile_url VARCHAR(120),
+    picture_url VARCHAR(120),
     rate NUMERIC(2, 1),
     total_review INT
 );
 
-# Example dummy insert
+-- Example insert
 INSERT INTO company(
     name, 
     profile_url, 
@@ -18,9 +18,9 @@ INSERT INTO company(
     total_review
 ) 
 VALUES  (
-    'companyName',
-    'companyProfileURL',
-    'companyPictureURL',
-    4.5,
-    20
+    'Google',
+    'https://www.glassdoor.com/Overview/Working-at-Google-EI_IE9079.11,17.htm',
+    'https://media.glassdoor.com/sql/9079/google-squarelogo-1441130773284.png',
+    4.4,
+    12000
 );

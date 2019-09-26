@@ -19,8 +19,14 @@ public class Company {
     @Column(name = "id")
     private long id;
 
-    @Column(name = "name")
+    @Column(name = "name", length = 80)
     private String name;
+
+    @Column(name = "profile_url", length = 120)
+    private String profileURL;
+
+    @Column(name = "picture_url", length = 120)
+    private String pictureURL;
 
     @Column(name = "rate")
     private Double rate;
