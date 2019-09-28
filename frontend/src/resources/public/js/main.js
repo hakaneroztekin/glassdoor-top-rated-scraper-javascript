@@ -42,12 +42,24 @@ function parseCompanyCount(html) {
 function parseCompaniesOnPage(html) {
     // empInfo
     console.log("✔ Parsing companies");
+    // companies is the parent HTML block where companies on the page are the children of.
     let companies = $('.empInfo', html);
     console.log("➡ " + companies.length + " companies found on the page");
-    // iterate through the companies on the page
+
+    /* We need 5 attributes for each company in our application
+     * Company name, profile URL, picture URL, rate and total review count
+     * We'll extract each info through the iteration
+     */
     for(let i = 0; i < companies.length; i++) {
         console.log("✔ Parsing a company (" + (i + 1) + "/" + companies.length + ")");
         let company = companies.get(i);
-        let profileURL = glassdoorURL + $('.sqLogoLink', company).attr('href');
+        // logo block contains info for profile URL and picture URL
+        let logoBlock = $('.sqLogoLink', company);
+        // extract profile URL
+        let profileURL = glassdoorURL + logoBlock.attr('href');
+        // go inside 'sqLogo' and then 'img' and get src attribute
+        let imageSource = $('img', $('.sqLogo', logoBlock)).attr('src');
+        // get exact URL
+        let pictureURL = glassdoorURL + imageSource;
     }
 }
