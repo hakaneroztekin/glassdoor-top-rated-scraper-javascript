@@ -68,14 +68,15 @@ function parseCompaniesOnPage(html) {
 
         // 1- Logo block
         let logoBlock = JSON.parse(scrapeLogoBlock(company));
-        console.log(logoBlock);
+        // console.log(logoBlock);
 
         // 2- Title block
         let titleBlock = JSON.parse(scrapeTitleBlock(company));
-        console.log(titleBlock);
+        // console.log(titleBlock);
 
         // 3- Summary block
-        scrapeSummaryBlock(company);
+        let summaryBlock = JSON.parse(scrapeSummaryBlock(company));
+        // console.log(summaryBlock);
     }
 }
 
@@ -116,6 +117,32 @@ function scrapeTitleBlock(company) {
     }))
 }
 
+// Summary block includes total reviews, salaries and interviews
+// We'll extract total review count
 function scrapeSummaryBlock(company) {
+    let summaryBlockHTML = $('.empLinks', company);
 
+    let totalReview = $('.num', $('.reviews', summaryBlockHTML)).text();
+    totalReview = convertToInteger(totalReview);
+
+    return(JSON.stringify({
+        totalReview: totalReview
+    }))
+}
+
+/*
+ * Convert 3k -> 3000
+ * We'll need that because in backend & DB, we use Integer
+ * to keep 'sort by review count' option open
+ * and instead of sending string values like 3k until database
+ * then converting there, it's better to handle it at the first step.
+ */
+function convertToInteger(val) {
+    let multiplier = val.substr(-1).toLowerCase();
+    if (multiplier === "k")
+        return parseFloat(val) * 1000;
+    else if (multiplier === "m")
+        return parseFloat(val) * 1000000;
+    else
+        return parseFloat(val);
 }
