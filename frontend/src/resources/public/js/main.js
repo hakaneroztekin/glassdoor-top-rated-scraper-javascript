@@ -43,7 +43,7 @@ function parseCompaniesOnPage(html) {
     // empInfo
     console.log("✔ Parsing companies");
     // companies is the parent HTML block where companies on the page are the children of.
-    let companies = $('.empInfo', html);
+    let companies = $('.eiHdrModule', html);
     console.log("➡ " + companies.length + " companies found on the page");
 
     /* We need 5 attributes for each company in our application
@@ -56,6 +56,7 @@ function parseCompaniesOnPage(html) {
         /*
         * The design of the website consists of 4 info blocks;
         * Logo block, Title block, Summary block, Review block.
+        * Logo block and title block are contained together
         *
         * 1- Logo block includes company logo and company profile URL
         * 2- Title block includes company name, rating and company website
@@ -67,11 +68,14 @@ function parseCompaniesOnPage(html) {
 
         // 1- Logo block
         let logoBlock = JSON.parse(scrapeLogoBlock(company));
-        // console.log(logoBlock);
+        console.log(logoBlock);
 
         // 2- Title block
         let titleBlock = JSON.parse(scrapeTitleBlock(company));
-        // console.log(titleBlock);
+        console.log(titleBlock);
+
+        // 3- Summary block
+        scrapeSummaryBlock(company);
     }
 }
 
@@ -110,4 +114,8 @@ function scrapeTitleBlock(company) {
         name: name,
         rate: rate
     }))
+}
+
+function scrapeSummaryBlock(company) {
+
 }
