@@ -8,8 +8,8 @@
 		<version>2.1.8.RELEASE</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.example</groupId>
-	<artifactId>demo</artifactId>
+	<groupId>com.hakaneroztekin</groupId>
+	<artifactId>open-source</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>glassdoor-top-rated</name>
 	<description>Top Rated Companies at Istanbul (Java, Spring, JavaScript)</description>
