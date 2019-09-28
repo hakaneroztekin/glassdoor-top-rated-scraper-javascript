@@ -1,0 +1,23 @@
+{
+  "name": "glassdoor-top-rated-scraper-javascript",
+  "version": "1.0.0",
+  "description": "Did you ever wonder top rated companies on Glassdoor?",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hakaneroztekin/top-rated-companies-in-istanbul.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hakaneroztekin/top-rated-companies-in-istanbul/issues"
+  },
+  "homepage": "https://github.com/hakaneroztekin/top-rated-companies-in-istanbul#readme",
+  "dependencies": {
+    "request": "^2.88.0"
+  }
+}
