@@ -1,28 +1,20 @@
 package com.hakaneroztekin.glassdoorTopRated.service.impl;
 
-import com.hakaneroztekin.glassdoorTopRated.config.AppConfig;
 import com.hakaneroztekin.glassdoorTopRated.dao.CompanyDAO;
 import com.hakaneroztekin.glassdoorTopRated.model.Company;
 import com.hakaneroztekin.glassdoorTopRated.service.CompanyService;
-
-import lombok.Data;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.annotation.PostConstruct;
-
 @Service
-@Data
 public class CompanyServiceImpl implements CompanyService {
 
-    private CompanyDAO companyDAO;
+    private final CompanyDAO companyDAO;
 
-    @PostConstruct
-    private void init() {
-        ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
-        companyDAO = context.getBean(CompanyDAO.class);
+    @Autowired
+    public CompanyServiceImpl(CompanyDAO companyDAO) {
+        this.companyDAO = companyDAO;
     }
 
     @Override
