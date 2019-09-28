@@ -1,6 +1,7 @@
 const requestPromise = require('request-promise');
 const $ = require('cheerio');
 
+const glassdoorURL = "https://www.glassdoor.com";
 connect();
 
 function connect() {
@@ -42,6 +43,11 @@ function parseCompaniesOnPage(html) {
     // empInfo
     console.log("✔ Parsing companies");
     let companies = $('.empInfo', html);
-    console.log("Found: " + companies.length);
-    console.log("➡ " + companies + " found on the page");
+    console.log("➡ " + companies.length + " companies found on the page");
+    // iterate through the companies on the page
+    for(let i = 0; i < companies.length; i++) {
+        console.log("✔ Parsing a company (" + (i + 1) + "/" + companies.length + ")");
+        let company = companies.get(i);
+        let profileURL = glassdoorURL + $('.sqLogoLink', company).attr('href');
+    }
 }
