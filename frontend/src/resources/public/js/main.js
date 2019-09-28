@@ -23,15 +23,25 @@ function connect() {
 }
 
 function parseHTML(html) {
+    console.log("✔ Parsing the page");
     let companyCount = parseCompanyCount(html);
+    parseCompaniesOnPage(html);
 }
 
 function parseCompanyCount(html) {
-    console.log("✔ Parsing the page");
+    console.log("✔ Parsing results size");
     let companyCount = $('.count', html)
         .children()
         .last()
         .text();
     console.log("➡ " + companyCount + " companies found");
     return companyCount;
+}
+
+function parseCompaniesOnPage(html) {
+    // empInfo
+    console.log("✔ Parsing companies");
+    let companies = $('.empInfo', html);
+    console.log("Found: " + companies.length);
+    console.log("➡ " + companies + " found on the page");
 }
