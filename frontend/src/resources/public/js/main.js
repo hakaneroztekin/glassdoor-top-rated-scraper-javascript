@@ -1,10 +1,9 @@
 const requestPromise = require('request-promise');
-const cheerio = require('cheerio');
+const $ = require('cheerio');
 
 connect();
 
 function connect() {
-    console.log("Connecting the website");
     // for version 1 of the app, Istanbul is used as the city
     let URL = "https://www.glassdoor.com/Reviews/istanbul-reviews-SRCH_IL.0,8_IM1160.htm";
     requestPromise({
@@ -14,10 +13,20 @@ function connect() {
         }
     })
         .then(function(response) {
-            console.log(response);
+            console.log("✔ Fetching page");
+            parseHTML(response);
         })
         .catch(function(err){
             console.log("error on connection");
             console.log(err);
         });
+}
+
+function parseHTML(html) {
+    console.log("✔ Parsing the page");
+    let companyCount = $('.count', html)
+        .children()
+        .last()
+        .text();
+    console.log(companyCount);
 }
