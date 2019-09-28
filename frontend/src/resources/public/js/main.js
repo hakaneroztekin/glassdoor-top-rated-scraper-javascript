@@ -6,7 +6,6 @@ const API_URL = "http://localhost:8080";
 const GLASSDOOR_URL = "https://www.glassdoor.com";
 let companyList = [];
 let totalCompanyCount;
-let companyCountPerPage;
 run();
 
 function run() {
@@ -14,10 +13,15 @@ function run() {
     // We'll iterate each page until the end
     // But first, we need to scrape total company count to find out how many pages are there
     // Also, pages after the first page has almost the same format, so we'll take advantage of it
-    let URL = "https://www.glassdoor.com/Reviews/istanbul-reviews-SRCH_IL.0,8_IM1160.htm";
-    connect(URL, callback => {
+    let beginningOfURL = "https://www.glassdoor.com/Reviews/istanbul-reviews-SRCH_IL.0,8_IM1160";
+    let firstPageURL = beginningOfURL + ".htm";
+    connect(firstPageURL, (companyCountPerPage) => {
         let totalPages = Math.ceil((totalCompanyCount / companyCountPerPage));
         console.log("➡ " + totalPages + " pages found");
+        // let currentPageIndex = 2;
+        // let pageURL = beginningOfURL + "_IP" + currentPageIndex + ".htm";
+        // connect(pageURL);
+        // // URL format: https://www.glassdoor.com/Reviews/istanbul-reviews-SRCH_IL.0,8_IM1160_IP2.htm
     });
 }
 
@@ -60,7 +64,6 @@ function parseCompaniesOnPage(html, callback) {
     // companies is the parent HTML block where companies on the page are the children of.
     let companies = $('.eiHdrModule', html);
     console.log("➡ " + companies.length + " companies found on the page");
-    companyCountPerPage = companies.length;
     /* We need 5 attributes for each company in our application
      * Company name, profile URL, picture URL, rate and total review count
      * We'll extract each info through the iteration
@@ -71,7 +74,7 @@ function parseCompaniesOnPage(html, callback) {
         extractInfo(company);
     }
     console.log("✔ Page is parsed completely");
-    callback();
+    callback(companies.length);
     // console.log(companyList);
 }
 
