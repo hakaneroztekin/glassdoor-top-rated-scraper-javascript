@@ -2,6 +2,7 @@ const requestPromise = require('request-promise');
 const $ = require('cheerio');
 
 const glassdoorURL = "https://www.glassdoor.com";
+let companiesList = [];
 connect();
 
 function connect() {
@@ -55,6 +56,8 @@ function parseCompaniesOnPage(html) {
         let company = companies.get(i);
         extractInfo(company);
     }
+    console.log("✔ Page is parsed completely");
+    console.log(companiesList);
 }
 
 /*
@@ -157,5 +160,5 @@ function generateCompanyJSON(logoBlock, titleBlock, summaryBlock) {
         pictureURL: logoBlock['pictureURL'],
         totalReview: summaryBlock['totalReview']
     });
-    console.log(companyJSON);
+    companiesList.push(companyJSON);
 }
