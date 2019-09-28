@@ -13,11 +13,11 @@ function connect() {
             'User-Agent': 'Request-Promise'
         }
     })
-        .then(function(response) {
+        .then(function (response) {
             console.log("✔ Fetching page");
             parseHTML(response);
         })
-        .catch(function(err){
+        .catch(function (err) {
             console.log("error on connection");
             console.log(err);
         });
@@ -50,34 +50,37 @@ function parseCompaniesOnPage(html) {
      * Company name, profile URL, picture URL, rate and total review count
      * We'll extract each info through the iteration
      */
-    for(let i = 0; i < companies.length; i++) {
+    for (let i = 0; i < companies.length; i++) {
         console.log("✔ Parsing a company (" + (i + 1) + "/" + companies.length + ")");
         let company = companies.get(i);
-        /*
-        * The design of the website consists of 4 info blocks;
-        * Logo block, Title block, Summary block, Review block.
-        * Logo block and title block are contained together
-        *
-        * 1- Logo block includes company logo and company profile URL
-        * 2- Title block includes company name, rating and company website
-        * 3- Summary block includes total reviews, salaries and interviews
-        * 4- Review block includes a review about the company
-        *
-        * We'll use the first 3 blocks for our app.
-        */
-
-        // 1- Logo block
-        let logoBlock = JSON.parse(scrapeLogoBlock(company));
-        // console.log(logoBlock);
-
-        // 2- Title block
-        let titleBlock = JSON.parse(scrapeTitleBlock(company));
-        // console.log(titleBlock);
-
-        // 3- Summary block
-        let summaryBlock = JSON.parse(scrapeSummaryBlock(company));
-        // console.log(summaryBlock);
+        extractInfo(company);
     }
+}
+
+/*
+ * The design of the website consists of 4 info blocks;
+ * Logo block, Title block, Summary block, Review block.
+ * Logo block and title block are contained together
+ *
+ * 1- Logo block includes company logo and company profile URL
+ * 2- Title block includes company name, rating and company website
+ * 3- Summary block includes total reviews, salaries and interviews
+ * 4- Review block includes a review about the company
+ *
+ * We'll use the first 3 blocks for our app.
+*/
+function extractInfo() {
+    // 1- Logo block
+    let logoBlock = JSON.parse(scrapeLogoBlock(company));
+    // console.log(logoBlock);
+
+    // 2- Title block
+    let titleBlock = JSON.parse(scrapeTitleBlock(company));
+    // console.log(titleBlock);
+
+    // 3- Summary block
+    let summaryBlock = JSON.parse(scrapeSummaryBlock(company));
+    // console.log(summaryBlock);
 }
 
 // Logo block includes company logo and company profile URL
@@ -90,7 +93,7 @@ function scrapeLogoBlock(company) {
     let imageSource = $('img', $('.sqLogo', logoBlockHTML)).attr('src');
     // get exact URL
     let pictureURL = glassdoorURL + imageSource;
-    return(JSON.stringify(
+    return (JSON.stringify(
         {
             profileURL: profileURL,
             pictureURL: pictureURL
@@ -111,7 +114,7 @@ function scrapeTitleBlock(company) {
     // company rating
     let spanBlock = $('span', $('.hideDesk .ratingsSummary', titleBlockHTML));
     let rate = $('.bigRating', spanBlock).text();
-    return(JSON.stringify({
+    return (JSON.stringify({
         name: name,
         rate: rate
     }))
@@ -125,7 +128,7 @@ function scrapeSummaryBlock(company) {
     let totalReview = $('.num', $('.reviews', summaryBlockHTML)).text();
     totalReview = convertToInteger(totalReview);
 
-    return(JSON.stringify({
+    return (JSON.stringify({
         totalReview: totalReview
     }))
 }
