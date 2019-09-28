@@ -72,15 +72,14 @@ function parseCompaniesOnPage(html) {
 function extractInfo(company) {
     // 1- Logo block
     let logoBlock = JSON.parse(scrapeLogoBlock(company));
-    console.log(logoBlock);
 
     // 2- Title block
     let titleBlock = JSON.parse(scrapeTitleBlock(company));
-    console.log(titleBlock);
 
     // 3- Summary block
     let summaryBlock = JSON.parse(scrapeSummaryBlock(company));
-    console.log(summaryBlock);
+
+    generateCompanyJSON(logoBlock, titleBlock, summaryBlock);
 }
 
 // Logo block includes company logo and company profile URL
@@ -148,4 +147,15 @@ function convertToInteger(val) {
         return parseFloat(val) * 1000000;
     else
         return parseFloat(val);
+}
+
+function generateCompanyJSON(logoBlock, titleBlock, summaryBlock) {
+    let companyJSON = JSON.stringify({
+        name: titleBlock['name'],
+        rate: titleBlock['rate'],
+        profileURL: logoBlock['profileURL'],
+        pictureURL: logoBlock['pictureURL'],
+        totalReview: summaryBlock['totalReview']
+    });
+    console.log(companyJSON);
 }
