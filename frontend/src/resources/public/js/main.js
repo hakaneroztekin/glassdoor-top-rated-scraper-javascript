@@ -5,11 +5,20 @@ const XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
 const API_URL = "http://localhost:8080";
 const GLASSDOOR_URL = "https://www.glassdoor.com";
 let companyList = [];
-connect();
+let totalCompanyCount;
+let totalPageCount;
+run();
 
-function connect() {
+function run() {
     // for version 1 of the app, Istanbul is used as the city
     let URL = "https://www.glassdoor.com/Reviews/istanbul-reviews-SRCH_IL.0,8_IM1160.htm";
+    connect(URL, callback => {
+        console.log(totalCompanyCount);
+        console.log(totalPageCount);
+    });
+}
+
+function connect(URL, callback) {
     requestPromise({
         url: URL,
         headers: {
@@ -18,7 +27,7 @@ function connect() {
     })
         .then(function (response) {
             console.log("✔ Fetching page");
-            parseHTML(response);
+            parseHTML(response, callback);
         })
         .catch(function (err) {
             console.log("Error occurred app");
@@ -26,10 +35,10 @@ function connect() {
         });
 }
 
-function parseHTML(html) {
+function parseHTML(html, callback) {
     console.log("✔ Parsing the page");
-    let companyCount = parseCompanyCount(html);
-    parseCompaniesOnPage(html);
+    parseCompanyCount(html);
+    parseCompaniesOnPage(html, callback);
 }
 
 function parseCompanyCount(html) {
@@ -39,16 +48,16 @@ function parseCompanyCount(html) {
         .last()
         .text();
     console.log("➡ " + companyCount + " companies found");
-    return companyCount;
+    totalCompanyCount = companyCount;
 }
 
-function parseCompaniesOnPage(html) {
+function parseCompaniesOnPage(html, callback) {
     // empInfo
     console.log("✔ Parsing companies");
     // companies is the parent HTML block where companies on the page are the children of.
     let companies = $('.eiHdrModule', html);
     console.log("➡ " + companies.length + " companies found on the page");
-
+    totalPageCount = companies.length;
     /* We need 5 attributes for each company in our application
      * Company name, profile URL, picture URL, rate and total review count
      * We'll extract each info through the iteration
@@ -59,12 +68,8 @@ function parseCompaniesOnPage(html) {
         extractInfo(company);
     }
     console.log("✔ Page is parsed completely");
+    callback();
     // console.log(companyList);
-
-    console.log("Testing POST request");
-    let company = companyList.pop();
-    console.log(company);
-    saveCompany(company);
 }
 
 /*
