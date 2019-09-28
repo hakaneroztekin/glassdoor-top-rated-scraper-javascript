@@ -9,6 +9,11 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Predicate;
+import javax.persistence.criteria.Root;
+import java.util.List;
 
 @Repository
 public class CompanyDAOImpl implements CompanyDAO {
@@ -16,6 +21,19 @@ public class CompanyDAOImpl implements CompanyDAO {
 
     @PersistenceContext
     EntityManager entityManager;
+
+    @Override
+    @Transactional
+    public List<Company> getAllCompanies() {
+        CriteriaBuilder builder = entityManager.getCriteriaBuilder();
+        CriteriaQuery<Company> query = builder.createQuery(Company.class);
+        Root<Company> root = query.from(Company.class);
+
+        query.select(root);
+        return entityManager
+                .createQuery(query)
+                .getResultList();
+    }
 
     @Override
     @Transactional
