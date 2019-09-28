@@ -2,28 +2,25 @@ package com.hakaneroztekin.glassdoorTopRated.dao.impl;
 
 import com.hakaneroztekin.glassdoorTopRated.dao.CompanyDAO;
 import com.hakaneroztekin.glassdoorTopRated.model.Company;
-import lombok.*;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
+
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 
 @Repository
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
-@ToString
-@EqualsAndHashCode
 public class CompanyDAOImpl implements CompanyDAO {
     private static final Logger LOG = LoggerFactory.getLogger(CompanyDAOImpl.class);
 
-    private SessionFactory sessionFactory;
+    @PersistenceContext
+    EntityManager entityManager;
 
     @Override
-    public void addCompany(Company company){
-        Session session = sessionFactory.getCurrentSession();
-        session.persist(company);
+    @Transactional
+    public void addCompany(Company company) {
+        entityManager.persist(company);
         LOG.info("Company saved. Details= " + company);
     }
 }
