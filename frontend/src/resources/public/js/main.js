@@ -1,8 +1,10 @@
 const requestPromise = require('request-promise');
 const $ = require('cheerio');
+const XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
 
-const glassdoorURL = "https://www.glassdoor.com";
-let companiesList = [];
+const API_URL = "http://localhost:8080";
+const GLASSDOOR_URL = "https://www.glassdoor.com";
+let companyList = [];
 connect();
 
 function connect() {
@@ -19,7 +21,7 @@ function connect() {
             parseHTML(response);
         })
         .catch(function (err) {
-            console.log("error on connection");
+            console.log("Error occurred app");
             console.log(err);
         });
 }
@@ -57,7 +59,12 @@ function parseCompaniesOnPage(html) {
         extractInfo(company);
     }
     console.log("✔ Page is parsed completely");
-    console.log(companiesList);
+    // console.log(companyList);
+
+    console.log("Testing POST request");
+    let company = companyList.pop();
+    console.log(company);
+    saveCompany(company);
 }
 
 /*
@@ -90,11 +97,11 @@ function extractInfo(company) {
 function scrapeLogoBlock(company) {
     let logoBlockHTML = $('.sqLogoLink', company);
     // extract profile URL
-    let profileURL = glassdoorURL + logoBlockHTML.attr('href');
+    let profileURL = GLASSDOOR_URL + logoBlockHTML.attr('href');
     // go inside 'sqLogo' and then 'img' and get src attribute
     let imageSource = $('img', $('.sqLogo', logoBlockHTML)).attr('src');
     // get exact URL
-    let pictureURL = glassdoorURL + imageSource;
+    let pictureURL = GLASSDOOR_URL + imageSource;
     return (JSON.stringify(
         {
             profileURL: profileURL,
@@ -160,21 +167,21 @@ function generateCompanyJSON(logoBlock, titleBlock, summaryBlock) {
         pictureURL: logoBlock['pictureURL'],
         totalReview: summaryBlock['totalReview']
     });
-    companiesList.push(companyJSON);
+    companyList.push(companyJSON);
 }
 
 // POST Method for sending to-do item to API
-function saveCompanies(value) {
+function saveCompany(value) {
     executeHTTPRequest(value, 'POST', '/company/add');
 }
 
 function executeHTTPRequest(value, request, endpoint, callback) {
+    endpoint = API_URL + endpoint;
     if (request === 'GET') {
         console.log("not implemented");
         // get(endpoint, callback);
     } else if (request === 'POST') {
-        console.log("not implemented");
-        // post(value, endpoint, callback);
+        post(value, endpoint, callback);
     } else if (request === 'DELETE') {
         console.log("not implemented");
         // deleteRequest(value, endpoint);
@@ -182,4 +189,32 @@ function executeHTTPRequest(value, request, endpoint, callback) {
         console.log("not implemented");
         // update(value, endpoint);
     }
+}
+
+function post(value, endpoint, callback) {
+    let request = new XMLHttpRequest();
+    console.log('POST ' + value + " to " + endpoint);
+    console.log(value);
+
+    // Configure the request: POST method to the endpoint
+    request.open('POST', endpoint);
+
+    // Let API know it's JSON data
+    request.setRequestHeader('Content-Type', 'application/json');
+
+    // Send the request
+    request.send(value);
+
+    request.addEventListener('load', () => {
+        console.log('Response received');
+        console.log(request.responseText);
+        let responseJSON = JSON.parse(request.responseText);
+        if (responseJSON.error) return console.log(responseJSON.error);
+        if (callback) callback(responseJSON);
+    });
+
+    request.addEventListener('error', (e) => {
+        console.log('Error occurred.');
+        console.log(e);
+    });
 }
