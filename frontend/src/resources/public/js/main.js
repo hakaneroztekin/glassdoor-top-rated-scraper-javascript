@@ -162,3 +162,24 @@ function generateCompanyJSON(logoBlock, titleBlock, summaryBlock) {
     });
     companiesList.push(companyJSON);
 }
+
+// POST Method for sending to-do item to API
+function saveCompanies(value) {
+    executeHTTPRequest(value, 'POST', '/company/add');
+}
+
+function executeHTTPRequest(value, request, endpoint, callback) {
+    if (request === 'GET') {
+        console.log("not implemented");
+        // get(endpoint, callback);
+    } else if (request === 'POST') {
+        console.log("not implemented");
+        // post(value, endpoint, callback);
+    } else if (request === 'DELETE') {
+        console.log("not implemented");
+        // deleteRequest(value, endpoint);
+    } else if (request === 'PUT') {
+        console.log("not implemented");
+        // update(value, endpoint);
+    }
+}
