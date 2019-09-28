@@ -66,17 +66,20 @@ function parseCompaniesOnPage(html) {
         */
 
         // 1- Logo block
-        let logoBlock = JSON.parse(scrapeLogoBlock(companies.get(i)));
-        console.log(logoBlock);
+        let logoBlock = JSON.parse(scrapeLogoBlock(company));
+        // console.log(logoBlock);
+
+        // 2- Title block
+        scrapeTitleBlock(company);
     }
 }
 
 function scrapeLogoBlock(company) {
-    let logoBlock = $('.sqLogoLink', company);
+    let logoBlockHTML = $('.sqLogoLink', company);
     // extract profile URL
-    let profileURL = glassdoorURL + logoBlock.attr('href');
+    let profileURL = glassdoorURL + logoBlockHTML.attr('href');
     // go inside 'sqLogo' and then 'img' and get src attribute
-    let imageSource = $('img', $('.sqLogo', logoBlock)).attr('src');
+    let imageSource = $('img', $('.sqLogo', logoBlockHTML)).attr('src');
     // get exact URL
     let pictureURL = glassdoorURL + imageSource;
     return(JSON.stringify(
@@ -85,4 +88,15 @@ function scrapeLogoBlock(company) {
             pictureURL: pictureURL
         }
     ));
+}
+
+function scrapeTitleBlock(company) {
+    let titleBlockHTML = $('.header', company);
+
+    // extract company name
+    let name = $('a', $('div', titleBlockHTML)).text();
+    // Remove unnecessary whitespace at the beginning
+    name = name.trim();
+
+    console.log(name);
 }
