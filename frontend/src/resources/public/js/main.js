@@ -23,10 +23,15 @@ function connect() {
 }
 
 function parseHTML(html) {
+    let companyCount = parseCompanyCount(html);
+}
+
+function parseCompanyCount(html) {
     console.log("✔ Parsing the page");
     let companyCount = $('.count', html)
         .children()
         .last()
         .text();
-    console.log(companyCount);
+    console.log("➡ " + companyCount + " companies found");
+    return companyCount;
 }
