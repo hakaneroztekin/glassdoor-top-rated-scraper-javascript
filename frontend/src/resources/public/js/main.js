@@ -98,5 +98,8 @@ function scrapeTitleBlock(company) {
     // Remove unnecessary whitespace at the beginning
     name = name.trim();
 
-    console.log(name);
+    // company rating
+    let spanBlock = $('span', $('.hideDesk .ratingsSummary', titleBlockHTML));
+    let rate = $('.bigRating', spanBlock).text();
+    console.log(rate);
 }
