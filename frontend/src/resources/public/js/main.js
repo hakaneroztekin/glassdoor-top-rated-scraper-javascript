@@ -66,12 +66,23 @@ function parseCompaniesOnPage(html) {
         */
 
         // 1- Logo block
-        let logoBlock = $('.sqLogoLink', company);
-        // extract profile URL
-        let profileURL = glassdoorURL + logoBlock.attr('href');
-        // go inside 'sqLogo' and then 'img' and get src attribute
-        let imageSource = $('img', $('.sqLogo', logoBlock)).attr('src');
-        // get exact URL
-        let pictureURL = glassdoorURL + imageSource;
+        let logoBlock = JSON.parse(scrapeLogoBlock(companies.get(i)));
+        console.log(logoBlock);
     }
+}
+
+function scrapeLogoBlock(company) {
+    let logoBlock = $('.sqLogoLink', company);
+    // extract profile URL
+    let profileURL = glassdoorURL + logoBlock.attr('href');
+    // go inside 'sqLogo' and then 'img' and get src attribute
+    let imageSource = $('img', $('.sqLogo', logoBlock)).attr('src');
+    // get exact URL
+    let pictureURL = glassdoorURL + imageSource;
+    return(JSON.stringify(
+        {
+            profileURL: profileURL,
+            pictureURL: pictureURL
+        }
+    ));
 }
