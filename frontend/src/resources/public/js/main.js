@@ -57,7 +57,7 @@ function parseCompaniesOnPage(html) {
         * The design of the website consists of 4 info blocks;
         * Logo block, Title block, Summary block, Review block.
         *
-        * 1- Logo block includes company logo and company logo
+        * 1- Logo block includes company logo and company profile URL
         * 2- Title block includes company name, rating and company website
         * 3- Summary block includes total reviews, salaries and interviews
         * 4- Review block includes a review about the company
@@ -70,10 +70,13 @@ function parseCompaniesOnPage(html) {
         // console.log(logoBlock);
 
         // 2- Title block
-        scrapeTitleBlock(company);
+        let titleBlock = JSON.parse(scrapeTitleBlock(company));
+        // console.log(titleBlock);
     }
 }
 
+// Logo block includes company logo and company profile URL
+// We'll extract both
 function scrapeLogoBlock(company) {
     let logoBlockHTML = $('.sqLogoLink', company);
     // extract profile URL
@@ -90,6 +93,8 @@ function scrapeLogoBlock(company) {
     ));
 }
 
+// Title block includes company name, rating and company website
+// We'll extract name and rating
 function scrapeTitleBlock(company) {
     let titleBlockHTML = $('.header', company);
 
@@ -101,5 +106,8 @@ function scrapeTitleBlock(company) {
     // company rating
     let spanBlock = $('span', $('.hideDesk .ratingsSummary', titleBlockHTML));
     let rate = $('.bigRating', spanBlock).text();
-    console.log(rate);
+    return(JSON.stringify({
+        name: name,
+        rate: rate
+    }))
 }
