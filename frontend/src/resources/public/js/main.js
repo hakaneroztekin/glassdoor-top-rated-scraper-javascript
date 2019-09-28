@@ -53,7 +53,19 @@ function parseCompaniesOnPage(html) {
     for(let i = 0; i < companies.length; i++) {
         console.log("✔ Parsing a company (" + (i + 1) + "/" + companies.length + ")");
         let company = companies.get(i);
-        // logo block contains info for profile URL and picture URL
+        /*
+        * The design of the website consists of 4 info blocks;
+        * Logo block, Title block, Summary block, Review block.
+        *
+        * 1- Logo block includes company logo and company logo
+        * 2- Title block includes company name, rating and company website
+        * 3- Summary block includes total reviews, salaries and interviews
+        * 4- Review block includes a review about the company
+        *
+        * We'll use the first 3 blocks for our app.
+        */
+
+        // 1- Logo block
         let logoBlock = $('.sqLogoLink', company);
         // extract profile URL
         let profileURL = glassdoorURL + logoBlock.attr('href');
