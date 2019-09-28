@@ -7,6 +7,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -32,10 +33,10 @@ public class CompanyControllerImpl implements CompanyController {
     }
 
     @Override
-    @PostMapping(value = "/add")
+    @PostMapping(value = "/add", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity addCompany(@RequestBody Company company) {
         System.out.println("add request received");
         companyService.addCompany(company);
-        return new ResponseEntity<String>("New company added" + company, HttpStatus.ACCEPTED);
+        return new ResponseEntity<>(company, HttpStatus.ACCEPTED);
     }
 }
