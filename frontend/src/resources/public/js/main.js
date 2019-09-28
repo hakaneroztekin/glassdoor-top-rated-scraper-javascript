@@ -69,18 +69,18 @@ function parseCompaniesOnPage(html) {
  *
  * We'll use the first 3 blocks for our app.
 */
-function extractInfo() {
+function extractInfo(company) {
     // 1- Logo block
     let logoBlock = JSON.parse(scrapeLogoBlock(company));
-    // console.log(logoBlock);
+    console.log(logoBlock);
 
     // 2- Title block
     let titleBlock = JSON.parse(scrapeTitleBlock(company));
-    // console.log(titleBlock);
+    console.log(titleBlock);
 
     // 3- Summary block
     let summaryBlock = JSON.parse(scrapeSummaryBlock(company));
-    // console.log(summaryBlock);
+    console.log(summaryBlock);
 }
 
 // Logo block includes company logo and company profile URL
