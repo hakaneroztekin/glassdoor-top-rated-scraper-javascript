@@ -19,7 +19,8 @@ import Toolbar from "@material-ui/core/Toolbar";
 import { typography } from '@material-ui/system';
 const useStyles = makeStyles(theme => ({
     root: {
-
+        backgroundRepeat: 'cover',
+        backgroundColor: 'rgba(235, 235, 235, 0.85)',
     },
     header: {
         backgroundColor: 'rgba(184, 15, 65, 1)'
@@ -40,7 +41,7 @@ const useStyles = makeStyles(theme => ({
         borderRadius: '4px',
         height: 100,
         flexGrow: 1,
-        backgroundColor: theme.palette.grey['60'],
+        backgroundColor: 'white',
         overflow: 'hidden',
     }
 }));
