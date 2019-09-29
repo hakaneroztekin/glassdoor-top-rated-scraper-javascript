@@ -4,8 +4,12 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
+const name = 'John';
+const signUpYear = 2018;
+const element = <h1>Hello {name}, you are a member for {2019 - signUpYear} years.</h1>;
+
 ReactDOM.render(
-    <h1>Hello world!</h1>,
+    element,
     document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
