@@ -4,8 +4,6 @@ import ReactDOM from 'react-dom';
 // import App from './App';
 import * as serviceWorker from './serviceWorker';
 
-import Button from '@material-ui/core/Button';
-import Container from "@material-ui/core/Container";
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from "@material-ui/core/Grid";
 import List from "@material-ui/core/List";
@@ -21,7 +19,7 @@ import Toolbar from "@material-ui/core/Toolbar";
 
 const useStyles = makeStyles(theme => ({
     header: {
-        backgroundColor: 'rgba(12, 170, 65, 1)',
+        backgroundColor: 'rgba(184, 15, 65, 1)',
         marginBottom: 30,
     },
     item: {
