@@ -6,9 +6,13 @@ Glassdoor is a great resource to learn about companies. Unfortunately, it misses
 
 # Progress & Further Development
 The project a bundle of 3 elements; React Front-end, NodeJS scraper and Java Back-end API.
-✔️ **Completed:** Establish a RESTful API that stores & fetches companies.
-✔️ **Completed:** Build Glassdoor scraper with a JavaScript scraper.
+
+✔️ **Completed:** Establish a RESTful API that stores & fetches companies (Java, Spring MVC, Hibernate, PostgreSQL, Docker)
+
+✔️ **Completed:** Build Glassdoor scraper with a NodeJS scraper (JavaScript)
+
 ⛱ **Current:** Design React web page
+
 ⛱ **Further:** Integrate both elements. Also extend features of the elements.
 
 # Tech Stack 
