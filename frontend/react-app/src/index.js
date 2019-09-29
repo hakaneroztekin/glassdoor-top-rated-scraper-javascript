@@ -1,8 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+// import './index.css';
 // import App from './App';
 import * as serviceWorker from './serviceWorker';
+
+import Button from '@material-ui/core/Button';
+
 
 function App() {
     return (
@@ -11,6 +14,10 @@ function App() {
                 <Header />
             </div>
             <div>
+                <Button variant="contained" color="primary">
+                    Hello World
+                </Button>
+                
                 <Company />
             </div>
         </div>
