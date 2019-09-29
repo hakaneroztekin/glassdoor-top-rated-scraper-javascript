@@ -16,24 +16,39 @@ import AppBar from "@material-ui/core/AppBar";
 import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
 import Toolbar from "@material-ui/core/Toolbar";
-
+import { typography } from '@material-ui/system';
 const useStyles = makeStyles(theme => ({
+    root: {
+        fontFamily: "Monospace",
+        fontSize: 20,
+    },
     header: {
         backgroundColor: 'rgba(184, 15, 65, 1)',
         marginBottom: 30,
     },
-    item: {
-        width: '100%',
-        maxWidth: 720,
-        backgroundColor: theme.palette.background.paper,
+    list: {
+        display: 'inline-block',
+        borderRadius: '3px',
+        background: 'transparent',
+        width: '80%',
+        alignItems: 'center',
+        padding: 20,
+        color: 'palevioletred',
     },
+    item: {
+        color: 'crimson',
+        margin: '0.5rem 1rem',
+        border: '2px solid rgba(245, 233, 233, 1)',
+        borderRadius: '4px',
+        height: 100,
+    }
 }));
 
 export default function App() {
     const classes = useStyles();
 
     return (
-        <div>
+        <div className={classes.root}>
             <div>
                 <Header />
             </div>
@@ -43,7 +58,7 @@ export default function App() {
                     justify="space-evenly"
                     alignItems="center"
                 >
-                        <List className={classes.item}>
+                        <List className={classes.list}>
                             <Company />
                             <Company />
                             <Company />
@@ -74,9 +89,10 @@ export function Header(props) {
 }
 
 function Company(props) {
+    const classes = useStyles();
     return (
-        <div className="Company">
-            <ListItem sp>
+        <div>
+            <ListItem className={classes.item}>
                 <ListItemAvatar>
                     <Avatar>
                         G
