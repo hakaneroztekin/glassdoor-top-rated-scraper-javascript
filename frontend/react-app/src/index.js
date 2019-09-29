@@ -5,6 +5,8 @@ import ReactDOM from 'react-dom';
 import * as serviceWorker from './serviceWorker';
 
 import Button from '@material-ui/core/Button';
+import Container from "@material-ui/core/Container";
+import Grid from "@material-ui/core/Grid";
 
 
 function App() {
@@ -14,11 +16,20 @@ function App() {
                 <Header />
             </div>
             <div>
-                <Button variant="contained" color="primary">
-                    Hello World
-                </Button>
-                
-                <Company />
+                <Grid
+                    container
+                    xs = "12"
+                    direction="column"
+                    justify="space-evenly"
+                    alignItems="center"
+                >
+                    <Grid item xs>
+                        <Company />
+                        <Button variant="contained" color="primary">
+                            Hello World
+                        </Button>
+                    </Grid>
+                </Grid>
             </div>
         </div>
     );
