@@ -19,28 +19,29 @@ import Toolbar from "@material-ui/core/Toolbar";
 import { typography } from '@material-ui/system';
 const useStyles = makeStyles(theme => ({
     root: {
-        fontFamily: "Monospace",
-        fontSize: 20,
+
     },
     header: {
-        backgroundColor: 'rgba(184, 15, 65, 1)',
-        marginBottom: 30,
+        backgroundColor: 'rgba(184, 15, 65, 1)'
     },
     list: {
-        display: 'inline-block',
+        display: 'block',
         borderRadius: '3px',
         background: 'transparent',
-        width: '80%',
+        width: '60%',
         alignItems: 'center',
         padding: 20,
         color: 'palevioletred',
     },
     item: {
         color: 'crimson',
-        margin: '0.5rem 1rem',
+        marginTop: 25,
         border: '2px solid rgba(245, 233, 233, 1)',
         borderRadius: '4px',
         height: 100,
+        flexGrow: 1,
+        backgroundColor: theme.palette.grey['60'],
+        overflow: 'hidden',
     }
 }));
 
@@ -101,7 +102,6 @@ function Company(props) {
                 <ListItemText
                     primary="Google" secondary="12000 reviews"
                 />
-                <Divider orientation="vertical"/>
                 <ListItemText primary="4.5 stars"/>
             </ListItem>
         </div>
