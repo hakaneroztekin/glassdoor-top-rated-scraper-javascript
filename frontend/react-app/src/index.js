@@ -14,8 +14,15 @@ import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 import Avatar from "@material-ui/core/Avatar";
 import Divider from "@material-ui/core/Divider";
+import AppBar from "@material-ui/core/AppBar";
+import IconButton from "@material-ui/core/IconButton";
+import Typography from "@material-ui/core/Typography";
+import Toolbar from "@material-ui/core/Toolbar";
 
 const useStyles = makeStyles(theme => ({
+    header: {
+        backgroundColor: 'rgba(12, 170, 65, 1)',
+    },
     item: {
         width: '100%',
         maxWidth: 720,
@@ -43,6 +50,7 @@ export default function App() {
                         <List className={classes.item}>
                             <Company />
                             <Company />
+                            <Company />
                         </List>
                     </Grid>
                 </Grid>
@@ -51,11 +59,22 @@ export default function App() {
     );
 }
 
-function Header(props) {
+export function Header(props) {
+    const classes = useStyles();
     return (
-            <head>
-                <title>Top Rated Companies @ Glassdoor</title>
-            </head>
+        <div className="Header">
+            <AppBar position="static" className={classes.header}>
+                <Toolbar color="red">
+                    <IconButton edge="start" color="inherit" aria-label="menu">
+                        {/*<MenuIcon />*/}
+                    </IconButton>
+                    <Typography variant="h6">
+                                Top Rated Companies @ Glassdoor
+                    </Typography>
+                {/*<Button color="inherit">Login</Button>*/}
+                </Toolbar>
+            </AppBar>
+        </div>
     );
 }
 
