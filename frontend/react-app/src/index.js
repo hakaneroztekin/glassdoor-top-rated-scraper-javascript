@@ -22,6 +22,7 @@ import Toolbar from "@material-ui/core/Toolbar";
 const useStyles = makeStyles(theme => ({
     header: {
         backgroundColor: 'rgba(12, 170, 65, 1)',
+        marginBottom: 30,
     },
     item: {
         width: '100%',
@@ -41,18 +42,14 @@ export default function App() {
             <div>
                 <Grid
                     container
-                    xs = "12"
-                    direction="column"
                     justify="space-evenly"
                     alignItems="center"
                 >
-                    <Grid item xs={12}>
                         <List className={classes.item}>
                             <Company />
                             <Company />
                             <Company />
                         </List>
-                    </Grid>
                 </Grid>
             </div>
         </div>
