@@ -6,11 +6,17 @@ import * as serviceWorker from './serviceWorker';
 
 const name = 'John';
 const signUpYear = 2018;
-const element = <h1>Hello {name}, you are a member for {2019 - signUpYear} years.</h1>;
+
+function Welcome(props) {
+    return <h1>Welcom {props.name}</h1>
+}
+
+const element = <Welcome name="Sarah" />;
 
 ReactDOM.render(
     element,
-    document.getElementById('root'));
+    document.getElementById('root')
+);
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
