@@ -4,21 +4,25 @@ import './index.css';
 // import App from './App';
 import * as serviceWorker from './serviceWorker';
 
-const name = 'John';
-const signUpYear = 2018;
-
-function Welcome(props) {
-    return <h1>Welcom {props.name}</h1>;
+// 'Google',
+//     'https://www.glassdoor.com/Overview/Working-at-Google-EI_IE9079.11,17.htm',
+//     'https://media.glassdoor.com/sql/9079/google-squarelogo-1441130773284.png',
+//     4.4,
+//     12000
+function Company(props) {
+    return (
+        <div className="Company">
+            <h1>Google</h1>
+            <h2>4.4 Point</h2>
+            <h2>12000 Reviews</h2>
+        </div>
+    )
 }
-
-// const element = <Welcome name="Sarah" />;
 
 function App() {
     return (
         <div>
-            <Welcome name="Sara" />
-            <Welcome name="Cahal" />
-            <Welcome name="Edite" />
+            <Company />
         </div>
     );
 }
