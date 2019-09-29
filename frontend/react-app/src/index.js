@@ -94,7 +94,7 @@ function Company(props) {
     const classes = useStyles();
     return (
         <div>
-            <ListItem className={classes.item}>
+            <ListItem button className={classes.item}>
                 <ListItemAvatar>
                     <Avatar>
                         G
