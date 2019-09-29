@@ -1,20 +1,30 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+// import App from './App';
 import * as serviceWorker from './serviceWorker';
 
 const name = 'John';
 const signUpYear = 2018;
 
 function Welcome(props) {
-    return <h1>Welcom {props.name}</h1>
+    return <h1>Welcom {props.name}</h1>;
 }
 
-const element = <Welcome name="Sarah" />;
+// const element = <Welcome name="Sarah" />;
+
+function App() {
+    return (
+        <div>
+            <Welcome name="Sara" />
+            <Welcome name="Cahal" />
+            <Welcome name="Edite" />
+        </div>
+    );
+}
 
 ReactDOM.render(
-    element,
+    <App />,
     document.getElementById('root')
 );
 
