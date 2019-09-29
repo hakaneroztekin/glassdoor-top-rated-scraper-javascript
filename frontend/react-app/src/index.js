@@ -9,6 +9,11 @@ import Container from "@material-ui/core/Container";
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from "@material-ui/core/Grid";
 import List from "@material-ui/core/List";
+import ListItemAvatar from "@material-ui/core/ListItemAvatar";
+import ListItem from "@material-ui/core/ListItem";
+import ListItemText from "@material-ui/core/ListItemText";
+import Avatar from "@material-ui/core/Avatar";
+import Divider from "@material-ui/core/Divider";
 
 const useStyles = makeStyles(theme => ({
     item: {
@@ -37,6 +42,7 @@ export default function App() {
                     <Grid item xs={12}>
                         <List className={classes.item}>
                             <Company />
+                            <Company />
                         </List>
                     </Grid>
                 </Grid>
@@ -56,15 +62,18 @@ function Header(props) {
 function Company(props) {
     return (
         <div className="Company">
-                <Grid
-                    container
-                    direction="row"
-                    justify="space-between"
-                >
-                    <Grid item xs={6} sm={3}>Logo</Grid>
-                    <Grid item xs={6} sm={3}>Google <br/> 12000 reviews</Grid>
-                    <Grid item xs>4.4 Rating</Grid>
-                </Grid>
+            <ListItem sp>
+                <ListItemAvatar>
+                    <Avatar>
+                        G
+                    </Avatar>
+                </ListItemAvatar>
+                <ListItemText
+                    primary="Google" secondary="12000 reviews"
+                />
+                <Divider orientation="vertical"/>
+                <ListItemText primary="4.5 stars"/>
+            </ListItem>
         </div>
     );
 }
