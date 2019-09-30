@@ -27,7 +27,7 @@ class ButtonBar extends Component {
                     color="primary"
                     className={classes.secondary}
                 >
-                    VISIT
+                    ➤
                 </Button>
             </div>
         )

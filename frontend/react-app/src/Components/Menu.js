@@ -7,7 +7,7 @@ import {makeStyles} from "@material-ui/core";
 // import './index.css';
 const useStyles = makeStyles(theme => ({
     menu: {
-        backgroundColor: 'rgba(184, 15, 65, 1)'
+
     }
 }));
 
@@ -15,8 +15,8 @@ export default function Menu(props) {
     const classes = useStyles();
     return (
         <div className="Menu">
-            <AppBar position="static" className={classes.menu}>
-                <Toolbar color="red">
+            <AppBar position="static">
+                <Toolbar>
                     <IconButton edge="start" color="inherit" aria-label="menu">
                         {/*<MenuIcon />*/}
                     </IconButton>

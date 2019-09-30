@@ -8,7 +8,6 @@ import {blue, indigo} from "@material-ui/core/colors";
 
 import Menu from './Components/Menu.js';
 import Company from './Components/Company.js';
-import CardItem from './Components/CardItem.js';
 
 const theme = createMuiTheme({
     palette: {
@@ -17,7 +16,7 @@ const theme = createMuiTheme({
         },
         primary: {
             main: indigo[700]
-        }
+        },
     },
     typography: {
         // Use the system font instead of the default Roboto font.
@@ -44,10 +43,9 @@ function App() {
                             alignItems="center"
                         >
                             <List>
-                                <CardItem/>
                                 <Company/>
-                                {/*<Company/>*/}
-                                {/*<Company/>*/}
+                                <Company/>
+                                <Company/>
                             </List>
                         </Grid>
                     </div>
