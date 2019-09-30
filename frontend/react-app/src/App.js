@@ -8,6 +8,7 @@ import {blue, indigo} from "@material-ui/core/colors";
 
 import Menu from './Components/Menu.js';
 import Company from './Components/Company.js';
+import CardItem from './Components/CardItem.js';
 
 const theme = createMuiTheme({
     palette: {
@@ -43,9 +44,10 @@ function App() {
                             alignItems="center"
                         >
                             <List>
+                                <CardItem/>
                                 <Company/>
-                                <Company/>
-                                <Company/>
+                                {/*<Company/>*/}
+                                {/*<Company/>*/}
                             </List>
                         </Grid>
                     </div>
