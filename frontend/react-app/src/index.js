@@ -1,22 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 // import './index.css';
-// import App from './App';
+import App from './App';
 import * as serviceWorker from './serviceWorker';
 
 import { makeStyles } from '@material-ui/core/styles';
-import Grid from "@material-ui/core/Grid";
-import List from "@material-ui/core/List";
 import ListItemAvatar from "@material-ui/core/ListItemAvatar";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 import Avatar from "@material-ui/core/Avatar";
-import Divider from "@material-ui/core/Divider";
 import AppBar from "@material-ui/core/AppBar";
 import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
 import Toolbar from "@material-ui/core/Toolbar";
-import { typography } from '@material-ui/system';
+
 const useStyles = makeStyles(theme => ({
     root: {
         backgroundRepeat: 'cover',
@@ -45,31 +42,6 @@ const useStyles = makeStyles(theme => ({
         overflow: 'hidden',
     }
 }));
-
-export default function App() {
-    const classes = useStyles();
-
-    return (
-        <div className={classes.root}>
-            <div>
-                <Header />
-            </div>
-            <div>
-                <Grid
-                    container
-                    justify="space-evenly"
-                    alignItems="center"
-                >
-                        <List className={classes.list}>
-                            <Company />
-                            <Company />
-                            <Company />
-                        </List>
-                </Grid>
-            </div>
-        </div>
-    );
-}
 
 export function Header(props) {
     const classes = useStyles();

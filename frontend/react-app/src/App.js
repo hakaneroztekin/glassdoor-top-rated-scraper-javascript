@@ -1,25 +1,56 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import { ThemeProvider } from '@material-ui/styles';
+import Grid from "@material-ui/core/Grid";
+import List from "@material-ui/core/List";
+import {Header} from "./index";
+import createMuiTheme from "@material-ui/core/styles/createMuiTheme";
+import {blue, indigo} from "@material-ui/core/colors";
+
+const theme = createMuiTheme({
+  palette: {
+    secondary: {
+      main: blue[900]
+    },
+    primary: {
+      main: indigo[700]
+    }
+  },
+  typography: {
+    // Use the system font instead of the default Roboto font.
+    fontFamily: [
+      '"Lato"',
+      'sans-serif'
+    ].join(',')
+  }
+});
 
 function App() {
+  // const classes = useStyles();
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <div>
+        <ThemeProvider theme={theme}>
+          <div>
+            <div>
+              <Header />
+            </div>
+            <div>
+              <Grid
+                  container
+                  justify="space-evenly"
+                  alignItems="center"
+              >
+                <List>
+                  {/*<Company />*/}
+                  {/*<Company />*/}
+                  {/*<Company />*/}
+                </List>
+              </Grid>
+            </div>
+          </div>
+        </ThemeProvider>
+      </div>
   );
 }
 
