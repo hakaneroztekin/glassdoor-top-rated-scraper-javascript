@@ -26,8 +26,10 @@ public class CompanyControllerImpl implements CompanyController {
     }
 
     @Override
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
     @GetMapping(value = "/get/all")
     public ResponseEntity getAllCompanies() {
+        System.out.println("get all request received");
         List<Company> allCompanies = companyService.getAllCompanies();
         return new ResponseEntity<>(allCompanies, HttpStatus.ACCEPTED);
     }
