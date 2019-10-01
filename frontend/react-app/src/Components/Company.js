@@ -89,7 +89,7 @@ class Company extends Component {
                         <div className={classes.baseline}>
                             <div className={classes.inline}>
                                 <Typography style={{ textTransform: 'uppercase' }} color='secondary' gutterBottom>
-                                    GOOGLE
+                                    GOOGLE {this.props.name}
                                 </Typography>
                                 <Typography variant="h6" gutterBottom>
                                     12000 Reviews
