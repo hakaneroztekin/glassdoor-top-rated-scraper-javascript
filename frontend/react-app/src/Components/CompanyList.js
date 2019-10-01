@@ -4,8 +4,14 @@ import Grid from "@material-ui/core/Grid";
 import React from "react";
 
 
+
 class CompanyList extends React.Component {
     render() {
+        let mockCompany = JSON.stringify({
+            "name": "LinkedIn",
+            "rating": 4.4
+        });
+        console.log(JSON.parse(mockCompany)['name']);
         return(
             <Grid
                 container
@@ -13,7 +19,7 @@ class CompanyList extends React.Component {
                 alignItems="center"
             >
                 <List>
-                    <Company/>
+                    <Company name={JSON.parse(mockCompany)['name']}/>
                     <Company/>
                     <Company/>
                 </List>
