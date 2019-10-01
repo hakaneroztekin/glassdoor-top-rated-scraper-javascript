@@ -7,11 +7,12 @@ import React from "react";
 
 class CompanyList extends React.Component {
     render() {
-        let mockCompany = JSON.stringify({
-            "name": "LinkedIn",
-            "rating": 4.4
-        });
-        console.log(JSON.parse(mockCompany)['name']);
+        // let mockCompany = JSON.stringify({
+        //     "name": "Google",
+        //     "rating": 4.5
+        // });
+        // let company = JSON.parse(mockCompany);
+        // console.log(JSON.parse(mockCompany)['name']);
         return(
             <Grid
                 container
@@ -19,8 +20,7 @@ class CompanyList extends React.Component {
                 alignItems="center"
             >
                 <List>
-                    <Company name={JSON.parse(mockCompany)['name']}/>
-                    <Company/>
+                    {/*<Company name={company['name']} rating={company['rating']}/>*/}
                     <Company/>
                 </List>
             </Grid>

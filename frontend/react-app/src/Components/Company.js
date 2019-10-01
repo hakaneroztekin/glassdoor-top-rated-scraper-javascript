@@ -98,7 +98,7 @@ class Company extends Component {
                         </div>
                         <div className={classes.inlineRight}>
                             <Typography style={{ textTransform: 'uppercase' }} color='secondary' gutterBottom>
-                                RATING
+                                RATING {this.props.rating}
                             </Typography>
                             <Typography variant="h4" gutterBottom>
                                 ⭐ 4.4
