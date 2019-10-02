@@ -26,6 +26,7 @@ class ButtonBar extends Component {
                     variant="contained"
                     color="primary"
                     className={classes.secondary}
+                    href={this.props.profileURL}
                 >
                     ➤
                 </Button>

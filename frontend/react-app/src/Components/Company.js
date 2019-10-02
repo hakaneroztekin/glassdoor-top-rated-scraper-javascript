@@ -90,7 +90,6 @@ class Company extends Component {
                                 <img
                                     src={this.props.pictureURL}
                                     alt={this.props.name}
-                                    width={100}
                                 />
                             </Avatar>
                         </div>
@@ -111,7 +110,7 @@ class Company extends Component {
                             <Typography variant="h4" gutterBottom>
                                 ⭐ {this.props.rating}
                             </Typography>
-                            <ButtonBar/>
+                            <ButtonBar profileURL={this.props.profileURL}/>
                         </div>
                     </div>
                 </Paper>
