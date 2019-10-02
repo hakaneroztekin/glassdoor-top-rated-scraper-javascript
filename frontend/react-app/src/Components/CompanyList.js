@@ -19,6 +19,17 @@ class CompanyList extends React.Component {
            });
     }
 
+    createCompanyComponents = () => {
+        let companyComponents = [];
+
+        for(let i = 0; i < 1; i++) {
+            let component = [];
+            component.push(<Company name='Goog' rating='4.9' />);
+            companyComponents.push(component);
+        }
+        return companyComponents;
+    };
+
     render() {
         let companies = this.state.companies;
         console.log("companies <");
@@ -37,8 +48,7 @@ class CompanyList extends React.Component {
                 alignItems="center"
             >
                 <List>
-                    {/*<Company name={company['name']} rating={company['rating']}/>*/}
-                    <Company/>
+                    {this.createCompanyComponents()}
                 </List>
             </Grid>
         );
