@@ -29,9 +29,12 @@ class CompanyList extends React.Component {
                 component.push(<Company
                     rank={i + 1}
                     name={companies[i]['name']}
+                    pictureURL={companies[i]['pictureURL']}
+                    profileURL={companies[i]['profileURL']}
                     rating={companies[i]['rate']}
                     review={companies[i]['totalReview']}
                 />);
+                console.log(component);
                 companyComponents.push(component);
             }
         }

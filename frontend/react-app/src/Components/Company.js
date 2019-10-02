@@ -87,7 +87,11 @@ class Company extends Component {
                             </Typography>
                         </div><div className={classes.avatarContainer}>
                             <Avatar className={classes.avatar}>
-
+                                <img
+                                    src={this.props.pictureURL}
+                                    alt={this.props.name}
+                                    width={100}
+                                />
                             </Avatar>
                         </div>
                         <div className={classes.baseline}>
