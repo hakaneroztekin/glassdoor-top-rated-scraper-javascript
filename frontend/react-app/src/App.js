@@ -31,10 +31,10 @@ function App() {
             <ThemeProvider theme={theme}>
                 <div>
                     <div>
-                        <Menu />
+                        <Menu/>
                     </div>
                     <div>
-                        <CompanyList />
+                        <CompanyList/>
                     </div>
                 </div>
             </ThemeProvider>

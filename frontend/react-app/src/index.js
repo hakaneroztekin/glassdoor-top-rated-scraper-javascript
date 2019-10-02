@@ -4,7 +4,7 @@ import * as serviceWorker from "./serviceWorker";
 import React from "react";
 
 ReactDOM.render(
-    <App />,
+    <App/>,
     document.getElementById('root')
 );
 

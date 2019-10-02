@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import withStyles from '@material-ui/styles/withStyles';
 import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
@@ -75,7 +75,7 @@ const styles = theme => ({
 class Company extends Component {
 
     render() {
-        const { classes } = this.props;
+        const {classes} = this.props;
 
         return (
             <div className={classes.root}>
@@ -83,12 +83,12 @@ class Company extends Component {
                     <div className={classes.itemContainer}>
                         <div className={classes.avatarContainer}>
                             <Avatar className={classes.avatar}>
-                                <DescriptionIcon />
+                                <DescriptionIcon/>
                             </Avatar>
                         </div>
                         <div className={classes.baseline}>
                             <div className={classes.inline}>
-                                <Typography style={{ textTransform: 'uppercase' }} color='secondary' gutterBottom>
+                                <Typography style={{textTransform: 'uppercase'}} color='secondary' gutterBottom>
                                     {this.props.name}
                                 </Typography>
                                 <Typography variant="h6" gutterBottom>
@@ -97,13 +97,13 @@ class Company extends Component {
                             </div>
                         </div>
                         <div className={classes.inlineRight}>
-                            <Typography style={{ textTransform: 'uppercase' }} color='secondary' gutterBottom>
+                            <Typography style={{textTransform: 'uppercase'}} color='secondary' gutterBottom>
                                 RATING
                             </Typography>
                             <Typography variant="h4" gutterBottom>
                                 ⭐ {this.props.rating}
                             </Typography>
-                            <ButtonBar />
+                            <ButtonBar/>
                         </div>
                     </div>
                 </Paper>

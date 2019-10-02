@@ -6,9 +6,7 @@ import React from "react";
 import {makeStyles} from "@material-ui/core";
 // import './index.css';
 const useStyles = makeStyles(theme => ({
-    menu: {
-
-    }
+    menu: {}
 }));
 
 export default function Menu(props) {

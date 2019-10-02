@@ -6,24 +6,25 @@ import React from "react";
 import {getAllCompanies} from "../api";
 
 class CompanyList extends React.Component {
-    constructor(props){
+    constructor(props) {
         super(props);
         this.state = {
             companies: null,
         };
         console.log(this.state.companies);
     }
+
     componentDidMount() {
-       getAllCompanies((allCompanies) => {
-               this.setState({companies : allCompanies})
-           });
+        getAllCompanies((allCompanies) => {
+            this.setState({companies: allCompanies})
+        });
     }
 
     createCompanyComponents = () => {
         let companyComponents = [];
         let companies = this.state.companies;
-        if(companies != null) {
-            for(let i = 0; i < companies.length; i++) {
+        if (companies != null) {
+            for (let i = 0; i < companies.length; i++) {
                 let component = [];
                 component.push(<Company
                     name={companies[i]['name']}
@@ -40,14 +41,7 @@ class CompanyList extends React.Component {
         let companies = this.state.companies;
         console.log("companies <");
         console.log(companies);
-        // let mockCompany = JSON.stringify({
-        //     "name": "Google",
-        //     "rating": 4.5
-        // });
-        // let company = JSON.parse(mockCompany);
-        // console.log(JSON.parse(mockCompany)['name']);
-
-        return(
+        return (
             <Grid
                 container
                 justify="space-evenly"
