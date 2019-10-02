@@ -21,11 +21,17 @@ class CompanyList extends React.Component {
 
     createCompanyComponents = () => {
         let companyComponents = [];
-
-        for(let i = 0; i < 1; i++) {
-            let component = [];
-            component.push(<Company name='Goog' rating='4.9' />);
-            companyComponents.push(component);
+        let companies = this.state.companies;
+        if(companies != null) {
+            for(let i = 0; i < companies.length; i++) {
+                let component = [];
+                component.push(<Company
+                    name={companies[i]['name']}
+                    rating={companies[i]['rate']}
+                    review={companies[i]['totalReview']}
+                />);
+                companyComponents.push(component);
+            }
         }
         return companyComponents;
     };
