@@ -27,6 +27,7 @@ class CompanyList extends React.Component {
             for (let i = 0; i < companies.length; i++) {
                 let component = [];
                 component.push(<Company
+                    rank={i + 1}
                     name={companies[i]['name']}
                     rating={companies[i]['rate']}
                     review={companies[i]['totalReview']}

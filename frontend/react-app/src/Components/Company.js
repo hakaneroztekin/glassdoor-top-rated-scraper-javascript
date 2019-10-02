@@ -82,8 +82,12 @@ class Company extends Component {
                 <Paper className={classes.paper}>
                     <div className={classes.itemContainer}>
                         <div className={classes.avatarContainer}>
+                            <Typography style={{textTransform: 'uppercase'}} color='secondary' gutterBottom>
+                                {this.props.rank}.
+                            </Typography>
+                        </div><div className={classes.avatarContainer}>
                             <Avatar className={classes.avatar}>
-                                <DescriptionIcon/>
+
                             </Avatar>
                         </div>
                         <div className={classes.baseline}>
