@@ -4,7 +4,6 @@ const API_URL = "http://localhost:8080";
 export function getAllCompanies(callback) {
     executeHTTPRequest(null, 'GET', '/company/get/all', callback);
     console.log("Returned from the get call..");
-    console.log(callback);
 }
 
 function executeHTTPRequest(value, request, endpoint, callback) {
