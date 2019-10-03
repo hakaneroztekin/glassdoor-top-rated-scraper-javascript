@@ -11,9 +11,11 @@ The project a bundle of 3 elements; React Front-end, NodeJS scraper and Java Bac
 
 ✔️ **Completed:** Build Glassdoor scraper with a NodeJS scraper (JavaScript)
 
-⛱ **Current:** Design React web page
+✔️ **Completed:** Design React web page
 
-⛱ **Further:** Integrate both elements. Also extend the features of the elements.
+✔️ **Completed:** Integrate both elements.
+
+⛱ **Further:** Extend the features of the elements.
 
 # Tech Stack 
 Java 11, Spring Boot, Spring MVC, JavaScript, Docker, PostgreSQL, RESTful API, Hibernate, Maven, IntelliJ, Postman, SourceTree, Git (soon: ReactJs)
