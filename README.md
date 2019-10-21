@@ -15,10 +15,12 @@ The project a bundle of 3 elements; React Front-end, NodeJS scraper and Java Bac
 
 ✔️ **Completed:** Integrate both elements.
 
-⛱ **Further:** Extend the features of the elements.
+⛱ **Further I:** Extend the features of the elements.
+
+⛱ **Further II:** Make the app accessible worldwide.
 
 # Tech Stack 
-Java 11, Spring Boot, Spring MVC, JavaScript, React, Docker, PostgreSQL, RESTful API, Hibernate, Maven, IntelliJ, Postman, SourceTree, Git
+Java 11, Spring Boot, Spring MVC, JavaScript, React, Docker, Material UI, PostgreSQL, RESTful API, Hibernate, Maven, IntelliJ, Postman, SourceTree, Git
 
 # Developer
 **[@hakaneroztekin](https://github.com/hakaneroztekin)**
