@@ -90,6 +90,7 @@ class Company extends Component {
                                 <img
                                     src={this.props.pictureURL}
                                     alt={this.props.name}
+                                    width={100}
                                 />
                             </Avatar>
                         </div>
