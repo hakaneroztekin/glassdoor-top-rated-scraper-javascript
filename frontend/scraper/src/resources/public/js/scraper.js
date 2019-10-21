@@ -10,18 +10,21 @@ run();
 
 function run() {
     // For the first version of the app, we choose companies at Istanbul
-    // We'll iterate each page until the end
-    // But first, we need to scrape total company count to find out how many pages are there
-    // Also, pages after the first page has almost the same format, so we'll take advantage of it
     let beginningOfURL = "https://www.glassdoor.com/Reviews/istanbul-reviews-SRCH_IL.0,8_IM1160";
     let firstPageURL = beginningOfURL + ".htm";
     connect(firstPageURL, (companyCountPerPage) => {
         let totalPages = Math.ceil((totalCompanyCount / companyCountPerPage));
         console.log("➡ " + totalPages + " pages found");
-        // let currentPageIndex = 2;
-        // let pageURL = beginningOfURL + "_IP" + currentPageIndex + ".htm";
-        // connect(pageURL);
-        // // URL format: https://www.glassdoor.com/Reviews/istanbul-reviews-SRCH_IL.0,8_IM1160_IP2.htm
+        // URL format: https://www.glassdoor.com/Reviews/istanbul-reviews-SRCH_IL.0,8_IM1160_IP2.htm
+        let currentPageIndex = 2;
+        while(currentPageIndex < 10) {
+            let pageURL = beginningOfURL + "_IP" + currentPageIndex + ".htm";
+            connect(pageURL, () => {
+                console.log(">>" + companyList.length);
+            });
+            currentPageIndex++;
+            console.log(currentPageIndex);
+        }
     });
 }
 
@@ -64,7 +67,8 @@ function parseCompaniesOnPage(html, callback) {
     // companies is the parent HTML block where companies on the page are the children of.
     let companies = $('.eiHdrModule', html);
     console.log("➡ " + companies.length + " companies found on the page");
-    /* We need 5 attributes for each company in our application
+    /*
+     * We need 5 attributes for each company in our application
      * Company name, profile URL, picture URL, rate and total review count
      * We'll extract each info through the iteration
      */
@@ -75,7 +79,6 @@ function parseCompaniesOnPage(html, callback) {
     }
     console.log("✔ Page is parsed completely");
     callback(companies.length);
-    // console.log(companyList);
 }
 
 /*
@@ -100,6 +103,7 @@ function extractInfo(company) {
     // 3- Summary block
     let summaryBlock = JSON.parse(scrapeSummaryBlock(company));
 
+    // Generate company JSON data from parsed info
     generateCompanyJSON(logoBlock, titleBlock, summaryBlock);
 }
 
