@@ -1,6 +1,8 @@
 # Glassdoor Top Rated - JavaScript
 Application that fetches Glassdoor data and shows top rated companies.
 
+**Latest:** Currently developing a similar but a greater project which will be publicly available very soon, then I'll continue on this.
+
 # Motivation 
 Glassdoor is a great resource to learn about companies. Unfortunately, it misses some basic features like sorting companies on their ratings. There are two motivation for the project, first, to provide sorted companies in a fancy design. Second, to get further experience with the technologies.  
 
